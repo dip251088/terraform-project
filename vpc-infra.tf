@@ -161,6 +161,8 @@ resource "aws_autoscaling_group" "web-ASG" {
   min_size           = 2
   vpc_zone_identifier = [aws_subnet.demo-subnet-1a.id,aws_subnet.demo-subnet-1b.id]
 
+  target_group_arns = [aws_lb_target_group.Webapp-LB-Target-group.arn]
+
   launch_template {
     id      = aws_launch_template.Webapp-launch-template.id
     version = "$Latest"
